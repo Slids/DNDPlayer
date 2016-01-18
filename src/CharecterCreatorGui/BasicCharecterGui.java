@@ -1,9 +1,6 @@
 package CharecterCreatorGui;
 
 import Charecter.CreateCharecter;
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.util.Arrays;
 import java.util.stream.IntStream;
 
 import javax.swing.JFrame;
@@ -11,9 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import Charecter.CharecterClasses.*;
-import javax.swing.AbstractListModel;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;

@@ -1,6 +1,7 @@
 import java.awt.EventQueue;
 
 import CharecterCreatorGui.BasicCharecterGui;
+import CharecterCreatorGui.StatsBuilder;
 
 public class temp {
 
@@ -18,6 +19,17 @@ public class temp {
 				}
 			}
 		});
+
+			EventQueue.invokeLater(new Runnable() {
+				public void run() {
+					try {
+						StatsBuilder frame = new StatsBuilder(me);
+						frame.setVisible(true);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
 		
 		@SuppressWarnings("unused")
 		int hey = 0;

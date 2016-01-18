@@ -3,7 +3,7 @@ package Logic.Dice;
 import java.util.Random;
 
 public class DiceBag {
-	private Random rand = new Random(System.currentTimeMillis());
+	private Random rand = new Random();
 	private int numD4 = 0;
 	private int numD6 = 0;
 	private int numD8 = 0;
