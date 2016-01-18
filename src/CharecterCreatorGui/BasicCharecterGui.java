@@ -1,5 +1,6 @@
 package CharecterCreatorGui;
 
+import Charecter.CreateCharecter;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.util.Arrays;
@@ -25,25 +26,9 @@ public class BasicCharecterGui extends JFrame {
 	private JTextField charName;
 
 	/**
-	 * Launch the application.
-	 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BasicCharecterGui frame = new BasicCharecterGui();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
 	 * Create the frame.
 	 */
-	public BasicCharecterGui() {
+	public BasicCharecterGui(CreateCharecter charecter) {
 		setTitle("Basic Charecter Information");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 657, 624);
@@ -85,7 +70,7 @@ public class BasicCharecterGui extends JFrame {
 		
 		JComboBox<Integer> cBLevel = new JComboBox<Integer>();
 		cBLevel.setEditable(true);
-		cBLevel.setModel(new DefaultComboBoxModel(IntStream.range(1,21).boxed().toArray()));
+		cBLevel.setModel(new DefaultComboBoxModel( IntStream.range(1,21).boxed().toArray()));
 		cBLevel.setBounds(43, 256, 84, 22);
 		contentPane.add(cBLevel);
 		
@@ -101,6 +86,15 @@ public class BasicCharecterGui extends JFrame {
 		JButton btnDoneWithBasisc = new JButton("Done With Basisc");
 		btnDoneWithBasisc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				charecter.ChooseBasicData(charName.getText(), (Classes)cBClass.getSelectedItem(), 
+						(Races)cBRace.getSelectedItem(), (Integer)cBLevel.getSelectedItem(), (Alignment)cBAlignment.getSelectedItem());
+				setVisible(false);
+				try {
+					this.finalize();
+				} catch (Throwable e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		btnDoneWithBasisc.setBounds(43, 380, 131, 25);
