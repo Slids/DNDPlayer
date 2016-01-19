@@ -1,7 +1,9 @@
 import java.awt.EventQueue;
 
+import javax.swing.JFrame;
+
 import CharecterCreatorGui.BasicCharecterGui;
-import CharecterCreatorGui.StatsBuilder;
+import CharecterCreatorGui.AbilityBuilderGui;
 
 public class temp {
 
@@ -9,27 +11,13 @@ public class temp {
 		// TODO Auto-generated method stub
 		Charecter.CreateCharecter me = new Charecter.CreateCharecter();
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					BasicCharecterGui frame = new BasicCharecterGui(me);
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
 
-			EventQueue.invokeLater(new Runnable() {
-				public void run() {
-					try {
-						StatsBuilder frame = new StatsBuilder(me);
-						frame.setVisible(true);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-			});
+		BasicCharecterGui bCG = new BasicCharecterGui(me);
+		bCG.setVisible(true);
+		
+		
+		AbilityBuilderGui aBG = new AbilityBuilderGui(me);
+		aBG.setVisible(true);
 		
 		@SuppressWarnings("unused")
 		int hey = 0;

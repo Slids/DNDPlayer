@@ -13,5 +13,4 @@ public enum Classes {
 	Sorcerer,
 	Warlock,
 	Wizard,
-	
 }

@@ -10,12 +10,14 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import Charecter.CharecterClasses.*;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 
-public class BasicCharecterGui extends JFrame {
+public class BasicCharecterGui extends JDialog {
 
 	private JPanel contentPane;
 	private JTextField charName;
@@ -25,13 +27,15 @@ public class BasicCharecterGui extends JFrame {
 	 */
 	public BasicCharecterGui(CreateCharecter charecter) {
 		setTitle("Basic Charecter Information");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 657, 624);
+		this.setModal(true);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+		this.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+
 		charName = new JTextField();
 		charName.setBounds(43, 57, 116, 22);
 		contentPane.add(charName);

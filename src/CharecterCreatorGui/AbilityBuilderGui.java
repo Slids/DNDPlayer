@@ -1,15 +1,12 @@
 package CharecterCreatorGui;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Charecter.CreateCharecter;
-import Charecter.CharecterClasses.Ability;
-import Charecter.CharecterClasses.Classes;
+import Charecter.CharecterClasses.Charecter;
 import Logic.Dice.CommonDiceFunctions;
 
 import javax.swing.DefaultComboBoxModel;
@@ -20,21 +17,21 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
-import javax.swing.JTextField;
+import javax.swing.JDialog;
 import javax.swing.JTextPane;
 
-public class StatsBuilder extends JFrame {
+public class AbilityBuilderGui extends JDialog {
 
 	private JPanel contentPane;
 	private JTextPane txtPleaseSelectYour;
 
-
 	/**
 	 * Create the frame.
 	 */
-	public StatsBuilder(CreateCharecter charecter)  {
+	public AbilityBuilderGui(CreateCharecter charecter)  {
 		setTitle("Ability Builder");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+		this.setModal(true);
 		setBounds(100, 100, 450, 502);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -102,44 +99,8 @@ public class StatsBuilder extends JFrame {
 		lblPossibleStats.setBounds(133, 17, 178, 16);
 		contentPane.add(lblPossibleStats);
 		
-
-		JButton btnRollDice = new JButton("Roll Dice");
-		btnRollDice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try
-				{
-				for(int i = 0; i < 6; i++)
-					possibleAbil[i] = CommonDiceFunctions.GetTotalMaxMD6OfN(3, 4);
-				}
-				catch(Exception e)
-				{
-					e.printStackTrace();
-				}
-				Arrays.sort(possibleAbil);
-				lblPossibleStats.setText(
-						Arrays.stream(possibleAbil)
-						.mapToObj(Integer::toString)
-						.collect(Collectors.joining(", ")));
-				lblPossibleStats.setVisible(true);
-				cBStrength.setEnabled(true);
-				cBDex.setEnabled(true);
-				cBCon.setEnabled(true);
-				cBInt.setEnabled(true);
-				cBWis.setEnabled(true);
-				cBCha.setEnabled(true);
-				cBStrength.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				cBDex.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				cBCon.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				cBInt.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				cBWis.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				cBCha.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
-				
-			}
-		});
-		btnRollDice.setBounds(12, 13, 97, 25);
-		contentPane.add(btnRollDice);
-		
 		JButton btnDoneWithAbilities = new JButton("Done with abilities");
+		btnDoneWithAbilities.setEnabled(false);
 		btnDoneWithAbilities.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int[] chosen = {(int)cBStrength.getSelectedItem(), (int)cBDex.getSelectedItem(),
@@ -164,6 +125,44 @@ public class StatsBuilder extends JFrame {
 		});
 		btnDoneWithAbilities.setBounds(22, 247, 169, 25);
 		contentPane.add(btnDoneWithAbilities);
+		
+
+		JButton btnRollDice = new JButton("Roll Dice");
+		btnRollDice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try
+				{
+				for(int i = 0; i < 6; i++)
+					possibleAbil[i] = CommonDiceFunctions.GetTotalMaxMD6OfN(3, 4);
+				}
+				catch(Exception e)
+				{
+					e.printStackTrace();
+				}
+				Arrays.sort(possibleAbil);
+				lblPossibleStats.setText(
+						Arrays.stream(possibleAbil)
+						.mapToObj(Integer::toString)
+						.collect(Collectors.joining(", ")));
+				lblPossibleStats.setVisible(true);
+				cBStrength.setEnabled(true);
+				btnDoneWithAbilities.setEnabled(true);
+				cBDex.setEnabled(true);
+				cBCon.setEnabled(true);
+				cBInt.setEnabled(true);
+				cBWis.setEnabled(true);
+				cBCha.setEnabled(true);
+				cBStrength.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				cBDex.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				cBCon.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				cBInt.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				cBWis.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				cBCha.setModel(new DefaultComboBoxModel<Integer>( Arrays.stream(possibleAbil).boxed().toArray(Integer[]::new)));
+				
+			}
+		});
+		btnRollDice.setBounds(12, 13, 97, 25);
+		contentPane.add(btnRollDice);
 		
 		txtPleaseSelectYour = new JTextPane();
 		txtPleaseSelectYour.setEditable(false);

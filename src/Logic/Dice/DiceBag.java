@@ -14,7 +14,7 @@ public class DiceBag {
 	public DiceBag()
 	{
 	}
-	
+		
 	public DiceBag(int d4, int d6, int d8, int d12, int d20, int d100)
 	{
 		numD4 = d4;

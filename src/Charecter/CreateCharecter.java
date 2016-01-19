@@ -115,4 +115,13 @@ public class CreateCharecter {
 		Arrays.stream(me.armourInBag).anyMatch(a -> a.Name == equip.Name);
 	}
 
+	public int GetCurrentLevel()
+	{
+		return me.level;
+	}
+	
+	public Classes GetCurrentClass()
+	{
+		return me.charClass;
+	}
 }

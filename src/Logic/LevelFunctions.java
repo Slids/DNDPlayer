@@ -1,5 +1,7 @@
 package Logic;
 
+import Charecter.CharecterClasses.Classes;
+
 public class LevelFunctions {
 
 	public static int ExpForNextLevel(int level)
@@ -41,5 +43,6 @@ public class LevelFunctions {
 	{
 		return MinExpForLevel(level) - 1;
 	}
+	
 	
 }
